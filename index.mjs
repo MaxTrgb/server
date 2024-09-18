@@ -6,8 +6,10 @@ import dbConnection from './db/index.mjs';
 dbConnection.on('error', ()=>console.log('MongoDB connection error'));
 dbConnection.on('connected',()=> console.log('MongoDB connection successful'));
 
-const app = express()
-const port = 4000
+const app = express();
+const port = 4000;
+
+app.use(express.json());
 
 app.use('/api/posts', postRouter);
 
