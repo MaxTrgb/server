@@ -42,4 +42,4 @@ const getPost = async (req, res) => {
     res.send(post);
 }
 
-export default { getAllPosts, createPost, deletePost, updatePost }
+export default { getAllPosts, createPost, deletePost, updatePost, getPost }
