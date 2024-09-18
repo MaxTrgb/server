@@ -27,4 +27,19 @@ const deletePost = async (req, res) => {
 
 }
 
-export default { getAllPosts, createPost, deletePost }
+const updatePost = async (req, res) => {
+    try{
+        const post = await Post.findByIdAndUpdate(req.params.id, req.body);
+        res.send(post);
+    }
+    catch(err){
+        res.stsatus(400).send(err);
+    }
+}
+
+const getPost = async (req, res) => {
+    const post = await Post.findById(req.params.id);
+    res.send(post);
+}
+
+export default { getAllPosts, createPost, deletePost, updatePost }
