@@ -6,15 +6,15 @@ const getAllPosts = async (req, res) => {
 }
 
 const createPost = async (req, res) => {
-    try{
+    try {
         const post = new Post(req.body);
         await post.save();
-        res.send(post);
+        res.status(201).send(post);  
+    } catch (err) {
+        res.status(400).send(err);
     }
-    catch(err){
-        res.stsatus(400).send(err);
-    }
-}
+};
+
 
 const deletePost = async (req, res) => {
     try{
@@ -22,7 +22,7 @@ const deletePost = async (req, res) => {
         res.send(post);
     }
     catch(err){
-        res.stsatus(400).send(err);
+        res.status(400).send(err);
     }
 
 }
