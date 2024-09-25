@@ -28,14 +28,14 @@ const deletePost = async (req, res) => {
 }
 
 const updatePost = async (req, res) => {
-    try{
-        const post = await Post.findByIdAndUpdate(req.params.id, req.body);
+    try {
+        const post = await Post.findByIdAndUpdate(req.params.id, req.body, { new: true });
         res.send(post);
+    } catch (err) {
+        res.status(400).send(err);
     }
-    catch(err){
-        res.stsatus(400).send(err);
-    }
-}
+};
+
 
 const getPost = async (req, res) => {
     const post = await Post.findById(req.params.id);
